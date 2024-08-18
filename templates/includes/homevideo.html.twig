@@ -1,0 +1,17 @@
+<link rel="stylesheet" href="{{ asset('styles/homevideo.css') }}">
+<div class="video-container">
+        <div class="video-wrapper">
+            <video id="video" src="{{ asset('videos/videotest.mp4') }}" controls></video>
+            <button class="play-button" id="playButton">Play Video</button>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript pour contrôler la lecture de la vidéo
+        document.getElementById('playButton').addEventListener('click', function() {
+            var video = document.getElementById('video');
+            video.style.visibility = 'visible'; // Rendre la vidéo visible
+            video.play(); // Démarrer la lecture de la vidéo
+            this.style.display = 'none'; // Cacher le bouton de lecture après le clic
+        });
+    </script>

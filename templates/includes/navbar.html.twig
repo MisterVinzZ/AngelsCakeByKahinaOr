@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap">
+        <link rel="stylesheet" href="{{ asset('styles/navbar.css') }}">
+        {% block stylesheets %}{% endblock %}
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="{{ path('accueil') }}">
+                    <img src="{{ asset('images/logo.png') }}" alt="Logo" class="logo">
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                    <ul class="navbar-nav mx-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('accueil') }}">Accueil</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('boutique') }}">Boutique</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link">Contact</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link">Blog</a>
+                        </li>
+                    </ul>
+                    <div class="navbar-nav ml-auto">
+                        <div class="nav-item appel" id="appel">
+                            <img id="phone-icon" src="{{ asset('images/phone.png') }}" alt="Phone" class="phone-icon">
+                            <a class="nav-link2">Appeler</a>
+                        </div>
+                        {% if not app.user %}
+                            <div class="nav-item" style="margin: 0;">
+                                <a class="nav-link2" href="{{ path('app_login') }}">
+                                    <img src="{{ asset('images/compte.png') }}" alt="Account" class="account-icon">
+                                </a>
+                            </div>
+                        {% else %}
+                            <div class="nav-item">
+                                <form action="{{ path('app_logout') }}" method="post">
+                                    <button type="submit" class="btn btn-danger">Déconnexion</button>
+                                </form>
+                            </div>
+                            {% if is_granted('ROLE_ADMIN') %}
+                                <div class="alert alert-info mt-3">
+                                    <strong>Bonjour Admin!</strong> Vous avez accès à toutes les fonctionnalités d'administration.
+                                </div>
+                            {% endif %}
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+        <!-- script de changement de couleur -->
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                var appelItems = document.querySelectorAll('.nav-item.appel');
+
+                appelItems.forEach(function(item) {
+                    var phoneIcon = item.querySelector('.phone-icon');
+
+                    item.addEventListener('mouseover', function() {
+                        phoneIcon.src = '{{ asset('images/phone2.png') }}'; // Changer l'image de l'icône au survol
+                    });
+
+                    item.addEventListener('mouseout', function() {
+                        phoneIcon.src = '{{ asset('images/phone.png') }}'; // Revenir à l'image d'origine
+                    });
+                });
+            });
+        </script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                // Sélectionner l'image avec la classe 'account-icon'
+                var connexionIcon = document.querySelector('.account-icon');
+
+                // Ajouter les écouteurs d'événements pour le survol et la sortie du survol
+                connexionIcon.parentElement.addEventListener('mouseover', function() {
+                    connexionIcon.src = '{{ asset('images/compte2.png') }}'; // Changer l'image au survol
+                });
+
+                connexionIcon.parentElement.addEventListener('mouseout', function() {
+                    connexionIcon.src = '{{ asset('images/compte.png') }}'; // Revenir à l'image d'origine
+                });
+            });
+        </script>
+
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>

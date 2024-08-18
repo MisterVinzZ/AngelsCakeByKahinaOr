@@ -1,0 +1,39 @@
+{# templates/security/login.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('styles/register.css') }}">
+    <link rel="stylesheet" href="{{ asset('styles/login.css') }}">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;900&display=swap" rel="stylesheet">
+{% endblock %}
+
+{% block body %}
+<title>Angels Cake By KahinaOr Connexion</title>
+
+    <div class="full-page-container">
+        <div class="login-container">
+            <h1>CONNEXION</h1>
+
+            <form action="{{ path('app_login') }}" method="post">
+                <div class="form-container">
+                    <div class="form-group">
+                        <input type="email" id="email" name="email" placeholder="Email" required />
+                    </div>
+                    <div class="form-group">
+                        <input type="password" id="password" name="password" placeholder="Password" required />
+                    </div>
+                </div>
+                <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}" />
+                <div class="form-actions">
+                    <button type="submit" class="btn-connexion">SE CONNECTER</button>
+                    <a href="{{ path('app_register') }}" class="btn btn-inscription">S'INSCRIRE</a>
+                </div>
+            </form>
+
+            {% if error %}
+                <div class="flash-error">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

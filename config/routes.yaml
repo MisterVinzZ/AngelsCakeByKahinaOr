@@ -1,0 +1,56 @@
+# config/routes.yaml
+controllers:
+    resource:
+        path: ../src/Controller/
+        namespace: App\Controller
+    type: attribute
+
+accueil:
+    path: /
+    controller: App\Controller\HomeController::index
+
+app_register:
+    path: /register
+    controller: App\Controller\RegistrationController::register
+    methods: [GET, POST]
+
+app_register_success:
+    path: /register/success
+    controller: App\Controller\RegistrationController::success
+    methods: [GET]
+
+app_login:
+    path: /login
+    controller: App\Controller\SecurityController::login
+
+app_logout:
+    path: /logout
+
+app_login_success:
+    path: /login/success
+    controller: App\Controller\SecurityController::success
+    methods: [GET]
+
+admin_product_add:
+    path: /admin/product/add
+    controller: App\Controller\ProductController::ajoutProduit
+    methods: [GET, POST]
+
+boutique:
+    path: /boutique
+    controller: App\Controller\ProductController::index
+
+product_detail:
+    path: /produit/{id}
+    controller: App\Controller\ProductController::show
+
+product_edit:
+    path: /product/edit/{id}
+    controller: App\Controller\ProductController::edit
+    requirements:
+        id: \d+
+
+product_delete:
+    path: /product/delete/{id}
+    controller: App\Controller\ProductController::delete
+    methods: POST

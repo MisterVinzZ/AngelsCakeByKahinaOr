@@ -1,0 +1,16 @@
+{% include 'includes/navbar.html.twig' %}
+<link rel="stylesheet" href="{{ asset('styles/formulaire.css') }}">
+
+{% block body %}
+
+    <div class="form-container">
+        <h1>Ajout de produit</h1>
+        {{ form_start(productForm) }}
+            <div class="form-group">
+                {{ form_widget(productForm) }}
+            </div>
+        {{ form_end(productForm) }}
+    </div>
+{% endblock %}
+
+{% include 'includes/footer.html.twig' %}

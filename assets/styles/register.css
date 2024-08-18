@@ -1,0 +1,186 @@
+/* styles/registration.css */
+
+html, body {
+    height: 100%;
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+.full-page-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(254, 251, 250, 0.74);
+    padding: 20px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.registration-container {
+    width: 100%;
+    max-width: 65%;
+    padding: 30px;
+}
+
+h1 {
+    text-align: center;
+    color: #735656;
+    padding-bottom: 35px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300; 
+}
+
+h2 {
+    color: #735656;
+    text-align: center;
+    padding-bottom: 40px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 900;
+    position: relative;
+    font-size: 40px;
+}
+
+h2::after {
+    content: "";
+    display: block;
+    width: 90%; 
+    height: 2px; 
+    background-color: #735656; 
+    margin: 10px auto; 
+}
+
+.form-columns {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.personal-info, .login-info {
+    width: 45%;
+}
+
+.form-columns .form-group {
+    margin-bottom: 50px;
+    position: relative;
+    margin-left: 100px;
+}
+
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #735656;
+    font-weight: 500;
+}
+
+.form-group input {
+    width: 90%; 
+    max-width: 400px; 
+    padding: 8px;
+    border: none;
+    border-bottom: 2px solid #735656; 
+    background-color: transparent;
+    font-size: 16px;
+}
+
+.form-group input::placeholder {
+    color: #735656; 
+    opacity: 1; 
+    position: absolute;
+    left: 0;
+    top: 10px; 
+    font-size: 16px; 
+}
+
+.form-group input:focus {
+    border-bottom-color: #4a3d2e; 
+    box-shadow: none; 
+    padding-left: 0px; 
+}
+
+.form-group input:focus-visible {
+    outline: none;
+}
+.form-actions {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.flash-error {
+    color: red;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.btn {
+    background-color: #735656;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+    margin: 5px;
+}
+
+.btn:hover {
+    background-color: #594949;
+}
+
+#user_dateNaissance{
+    display: flex;
+}
+
+select {
+    word-wrap: normal;
+    background-color: transparent; /* Assurez-vous que cette couleur est correcte */
+    border: 2px solid #735656;
+    appearance: none; 
+    width: 20%; /* Ajustez la largeur des selects */
+    padding: 8px;
+    font-size: 16px;
+    margin-right: 5px; /* Espacement entre les selects */
+    box-sizing: border-box; /* Inclure le padding et la bordure dans la largeur totale */
+    outline: none; /* Retirer le contour par défaut du navigateur */
+}
+
+/* Styles pour le bouton d'inscription */
+.btn-inscription {
+    background-color: rgba(254, 251, 250, 0.74);
+    color: #735656;
+    padding: 20px 100px;
+    border: 2px solid #735656;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500; /* Roboto Medium */
+    margin: 5px;
+}
+
+.btn-inscription:hover {
+    background-color: #594949;
+    color: rgba(255, 255, 255);    
+}
+
+/* Styles pour le bouton de connexion */
+.btn-connexion {
+    background: none;
+    color: #735656;
+    border: none;
+    text-decoration: underline;
+    cursor: pointer;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500; 
+    margin: 5px;
+}
+
+.btn-connexion:hover {
+    color: #f6dad0;
+    text-decoration: underline;
+}
+
+
+
+
+

@@ -1,0 +1,101 @@
+/* styles/login.css */
+
+html, body {
+    height: 100%;
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+.full-page-container {
+    padding: 40px;
+}
+
+.login-container {
+    width: 100%;
+    max-width: 528px;
+}
+
+h1 {
+    font-weight: 300!important; 
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centre les éléments horizontalement */
+}
+
+.form-group {
+    margin-bottom: 50px!important;
+    width: 100%;
+    max-width: 300px; /* Largeur maximale des champs */
+}
+
+.form-group input::placeholder {
+    color: #735656; 
+    opacity: 1; 
+    font-size: 16px; 
+}
+
+.form-group input:focus {
+    border-bottom-color: #4a3d2e; 
+    box-shadow: none; 
+}
+
+.form-group input:focus-visible {
+    outline: none;
+}
+
+.form-actions {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.flash-error {
+    color: red;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.btn {
+    background-color: #735656;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+    margin: 5px;
+}
+.btn-inscription{
+    text-decoration: underline;
+    color: #735656!important;
+}
+.btn-inscription:hover {
+    color: #f6dad0!important;
+    background-color: rgba(254, 251, 250, 0.74);
+}
+
+.btn-connexion {
+    background-color: rgba(254, 251, 250, 0.74);
+    color: #735656;
+    padding: 20px 20px;
+    border: 2px solid #735656;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500; /* Roboto Medium */
+    margin: 5px;
+    width: 80%;
+}
+
+.btn-connexion:hover {
+    background-color: #594949;
+    color: rgba(255, 255, 255);
+    text-decoration: none;    
+}
+
+.form-group input {
+    width: 100%; 
+}

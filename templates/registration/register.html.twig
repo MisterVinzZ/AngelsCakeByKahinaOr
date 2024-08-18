@@ -1,0 +1,62 @@
+{# templates/registration/register.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block title %}Angels Cake By KahinaOr{% endblock %}
+
+{% block body %}
+<link rel="stylesheet" href="{{ asset('styles/register.css') }}">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;900&display=swap" rel="stylesheet">
+
+<div class="full-page-container">
+    <div class="registration-container">
+        <h1>INSCRIPTION</h1>
+
+        {% for message in app.flashes('error') %}
+            <div class="flash-error">
+                {{ message }}
+            </div>
+        {% endfor %}
+
+        {{ form_start(registrationForm) }}
+        
+        <div class="form-columns">
+            <div class="personal-info">
+                <h2>Informations personnelles</h2>
+                <div class="form-group">
+                    {{ form_widget(registrationForm.nom, {'attr': {'placeholder': 'Nom*'}}) }}
+                </div>
+                <div class="form-group">
+                    {{ form_widget(registrationForm.prenom, {'attr': {'placeholder': 'Prénom*'}}) }}
+                </div>
+                <div class="form-group">
+                    {{ form_label(registrationForm.dateNaissance, 'Date de naissance') }}
+                    {{ form_widget(registrationForm.dateNaissance) }}
+                </div>
+                <div class="form-group">
+                    {{ form_widget(registrationForm.telephone, {'attr': {'placeholder': 'Numéro de téléphone*'}}) }}
+                </div>
+            </div>
+
+            <div class="login-info">
+                <h2>Informations de connexion</h2>
+                <div class="form-group">
+                    {{ form_widget(registrationForm.email, {'attr': {'placeholder': 'Email*'}}) }}
+                </div>
+                <div class="form-group">
+                    {{ form_widget(registrationForm.mdp, {'attr': {'placeholder': 'Mot de passe*'}}) }}
+                </div>
+                <div class="form-group">
+                    {{ form_widget(registrationForm.confirmMdp, {'attr': {'placeholder': 'Confirmer le mot de passe*'}}) }}
+                </div>
+            </div>
+        </div>
+        
+        <div class="form-actions">
+            <button class="btn-inscription">S'INSCRIRE</button>
+            <a href="{{ path('app_login') }}" class="btn-connexion">Se connecter</a>
+        </div>
+
+        {{ form_end(registrationForm) }}
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,270 @@
+{% include 'includes/navbar.html.twig' %}
+
+{% block body %}
+    <link rel="stylesheet" href="{{ asset('styles/objectcard.css') }}">
+    <link rel="stylesheet" href="{{ asset('styles/boutique.css') }}">
+
+    <div class="container mt-5">
+    <div class="row">
+        
+        <!-- Barre latérale des filtres -->
+        <div class="col-md-3">
+            <div class="sidebar">
+                <h4>Filtres</h4>
+
+                <div class="filter-category">
+                    <h5 onclick="toggleFilterOptions('categorie')">
+                        Catégories <img src="{{ asset('images/flechemarron.png') }}" class="toggle-arrow" id="categorie-arrow" alt="Toggle Arrow">
+                    </h5>
+                    <hr>
+                    <ul id="categorie" class="filter-options">
+                        {% for key, categorie in {
+                            'gateau_enfant': 'Gâteau pour enfant',
+                            'gateau_adolescent': 'Gâteau pour adolescent',
+                            'mignardise': 'Mignardise',
+                            'evenement_entreprise': 'Événement d\'entreprise'
+                        } %}
+                            <li>
+                                <input type="checkbox" class="filter-checkbox" value="{{ key }}" onchange="applyFilters()"> 
+                                <a>{{ categorie }}</a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                
+                <div class="filter-category">
+                    <h5 onclick="toggleFilterOptions('cremeNumberCake')">
+                        Crème Number Cake <img src="{{ asset('images/flechemarron.png') }}" class="toggle-arrow" id="cremeNumberCake-arrow" alt="Toggle Arrow">
+                    </h5>
+                    <hr>
+                    <ul id="cremeNumberCake" class="filter-options">
+                        {% for key, creme in {
+                            'chantilly_chocolat': 'Chantilly chocolat',
+                            'nutella': 'Nutella',
+                            'pistache': 'Pistache',
+                            'speculos': 'Spéculos'
+                        } %}
+                            <li>
+                                <input type="checkbox" class="filter-checkbox" value="{{ key }}" onchange="applyFilters()"> 
+                                <a>{{ creme }}</a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                
+                <div class="filter-category">
+                    <h5 onclick="toggleFilterOptions('ganacheLayerCake')">
+                        Ganache Layer Cake <img src="{{ asset('images/flechemarron.png') }}" class="toggle-arrow" id="ganacheLayerCake-arrow" alt="Toggle Arrow">
+                    </h5>
+                    <hr>
+                    <ul id="ganacheLayerCake" class="filter-options">
+                        {% for key, ganache in {
+                            'caramel': 'Caramel',
+                            'chocolat': 'Chocolat',
+                            'chocolat_caramel': 'Chocolat caramel',
+                            'chocolat_coco': 'Chocolat coco',
+                            'chocolat_framboise': 'Chocolat framboise',
+                            'framboise': 'Framboise',
+                            'kinder': 'Kinder',
+                            'mangue': 'Mangue',
+                            'oreo': 'Oréo',
+                            'pistache': 'Pistache',
+                            'poire_chocolat': 'Poire chocolat',
+                            'pomme': 'Pomme',
+                            'smarties': 'Smarties',
+                            'snickers': 'Snickers',
+                            'speculos': 'Spéculos'
+                        } %}
+                            <li>
+                                <input type="checkbox" class="filter-checkbox" value="{{ key }}" onchange="applyFilters()"> 
+                                <a>{{ ganache }}</a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                
+                <div class="filter-category">
+                    <h5 onclick="toggleFilterOptions('nbPart')">
+                        Nombre de parts <img src="{{ asset('images/flechemarron.png') }}" class="toggle-arrow" id="nbPart-arrow" alt="Toggle Arrow">
+                    </h5>
+                    <hr>
+                    <ul id="nbPart" class="filter-options">
+                        {% for key, parts in {
+                            '10_15': '10/15 parts',
+                            '13_15': '13/15 parts',
+                            '18_20': '18/20 parts',
+                            '20_25': '20/25 parts',
+                            '25_30': '25/30 parts (étage)',
+                            '4_parts': '4 parts',
+                            '6_8_parts': '6/8 parts'
+                        } %}
+                            <li>
+                                <input type="checkbox" class="filter-checkbox" value="{{ key }}" onchange="applyFilters()"> 
+                                <a>{{ parts }}</a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+
+                <!-- Filtre par prix -->
+                <div class="filter-category">
+                    <h5 onclick="toggleFilterOptions('priceFilter')">
+                        Prix <img src="{{ asset('images/flechemarron.png') }}" class="toggle-arrow" id="priceFilter-arrow" alt="Toggle Arrow">
+                    </h5>
+                    <hr>
+                    <div id="priceFilter" class="filter-options" style="display: none;">
+                        <input type="range" id="priceRange" min="0" max="300" step="1" oninput="updatePriceLabel(this.value)" onchange="applyFilters()">
+                        <p>Prix: <span id="priceLabel">0</span> €</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contenu principal de la boutique -->
+       <div class="col-md-9">
+            <div class="row align-items-center mb-3">
+                <!-- Barre de recherche centrée -->
+                <div class="col-12 col-md-6 d-flex justify-content-center mb-3 mb-md-0">
+                    <div class="search-bar">
+                        <input type="text" id="searchInput" placeholder="Rechercher des produits..." oninput="filterProducts()">
+                        <button class="search-button" onclick="filterProducts()">
+                            <img src="{{ asset('images/loupe.png') }}" alt="Search Icon">
+                        </button>
+                    </div>
+                </div>
+                <!-- Filtre de tri aligné à droite -->
+                <div class="col-12 col-md-6 d-flex justify-content-end">
+                    <div class="sort-options">
+                        <label for="sort">Trier par:</label>
+                        <select id="sort" class="custom-select" onchange="sortProducts()">
+                            <option value="alphabetical_asc">A-Z</option>
+                            <option value="alphabetical_desc">Z-A</option>
+                            <option value="price_asc">Prix: Bas à Élevé</option>
+                            <option value="price_desc">Prix: Élevé à Bas</option>
+                        </select>
+                    </div>
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <a href="{{ path('admin_product_add') }}" class="btn btn-primary ml-3">AJOUTER UN PRODUIT</a>
+                    {% endif %}
+                </div>
+            </div>
+            
+            <div class="row" id="product-list">
+                {% for produit in produits %}
+                    <div class="col-md-4 mb-4 product-item" data-categorie="{{ produit.categorie }}" data-creme="{{ produit.cremeNumberCake }}" data-ganache="{{ produit.ganacheLayerCake }}" data-nbpart="{{ produit.nbPart }}" data-price="{{ produit.prix }}">
+                        <div class="product-card">
+                            <img src="{{ asset('uploads/images/' ~ produit.image) }}" class="product-image" alt="{{ produit.nom }}">
+                            <div class="product-details">
+                                <h5 class="product-name">{{ produit.nom }}</h5>
+                                <div class="transition-bar"></div>
+                                <p class="product-price">{{ produit.prix }} €</p>
+                                <div class="product-actions">
+                                    <a href="{{ path('product_detail', {'id': produit.id}) }}" class="product-link">
+                                        Voir plus
+                                        <img src="{{ asset('images/flechemarron.png') }}" class="toggle-arrow" id="categorie-arrow" alt="Toggle Arrow">
+                                    </a>
+                                    {% if is_granted('ROLE_ADMIN') %}
+                                        <a href="{{ path('product_edit', {'id': produit.id}) }}" class="btn btn-danger">Modifier</a>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% else %}
+                    <p>Aucun produit disponible pour le moment.</p>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function toggleFilterOptions(filterId) {
+        const filterElement = document.getElementById(filterId);
+        const arrowElement = document.querySelector(`#${filterId}-arrow`);
+        
+        if (filterElement.style.display === "none" || filterElement.style.display === "") {
+            filterElement.style.display = "block";
+            arrowElement.classList.add('visible-arrow');
+        } else {
+            filterElement.style.display = "none";
+            arrowElement.classList.remove('visible-arrow');
+        }
+    }
+
+    function applyFilters() {
+        const checkboxes = document.querySelectorAll('.filter-checkbox:checked');
+        const selectedFilters = Array.from(checkboxes).map(cb => cb.value);
+        const maxPrice = document.getElementById('priceRange').value;
+        
+        const products = document.querySelectorAll('.product-item');
+        
+        products.forEach(product => {
+            const productCategories = [
+                product.dataset.categorie, 
+                product.dataset.creme, 
+                product.dataset.ganache, 
+                product.dataset.nbpart
+            ];
+            const productPrice = parseFloat(product.dataset.price);
+            
+            // Vérifiez si le produit correspond aux filtres sélectionnés et au prix
+            const matchesFilters = selectedFilters.every(filter => productCategories.includes(filter));
+            const matchesPrice = productPrice <= maxPrice;
+            
+            if (matchesFilters && matchesPrice) {
+                product.style.display = '';
+            } else {
+                product.style.display = 'none';
+            }
+        });
+    }
+
+    function updatePriceLabel(value) {
+        document.getElementById('priceLabel').innerText = value;
+        applyFilters(); 
+    }
+    document.addEventListener('DOMContentLoaded', () => {
+        // Initialisez la valeur de la barre de prix au maximum fixé
+        const maxPrice = 300;
+        const priceRange = document.getElementById('priceRange');
+        priceRange.max = maxPrice;
+        priceRange.value = maxPrice;
+        updatePriceLabel(maxPrice);
+        applyFilters();
+    });
+    function sortProducts() {
+        const sortOption = document.getElementById('sort').value;
+        const productsContainer = document.getElementById('product-list');
+        const products = Array.from(productsContainer.querySelectorAll('.product-item'));
+
+        let sortedProducts;
+        if (sortOption === 'alphabetical_asc') {
+            sortedProducts = products.sort((a, b) => a.querySelector('.product-name').innerText.localeCompare(b.querySelector('.product-name').innerText));
+        } else if (sortOption === 'alphabetical_desc') {
+            sortedProducts = products.sort((a, b) => b.querySelector('.product-name').innerText.localeCompare(a.querySelector('.product-name').innerText));
+        } else if (sortOption === 'price_asc') {
+            sortedProducts = products.sort((a, b) => parseFloat(a.dataset.price) - parseFloat(b.dataset.price));
+        } else if (sortOption === 'price_desc') {
+            sortedProducts = products.sort((a, b) => parseFloat(b.dataset.price) - parseFloat(a.dataset.price));
+        }
+
+        productsContainer.innerHTML = '';
+        sortedProducts.forEach(product => productsContainer.appendChild(product));
+    }
+    function filterProducts() {
+            const searchQuery = document.getElementById('searchInput').value.toLowerCase();
+            const products = document.querySelectorAll('.product-item');
+
+            products.forEach(product => {
+                const productName = product.querySelector('.product-name').innerText.toLowerCase();
+                if (productName.includes(searchQuery)) {
+                    product.style.display = '';
+                } else {
+                    product.style.display = 'none';
+                }
+            });
+        }
+</script>
+{% endblock %}
+{% include 'includes/footer.html.twig' %}
