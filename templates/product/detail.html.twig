@@ -1,18 +1,28 @@
 {% include 'includes/navbar.html.twig' %}
-
-{% block title %}{{ produit.nom }}{% endblock %}
+<link rel="stylesheet" href="{{ asset('styles/details.css') }}">
 
 {% block body %}
-    <div class="container mt-5">
-        <div class="row">
-            <div class="col-md-6">
-                <img src="{{ asset('images/' ~ produit.image) }}" class="img-fluid" alt="{{ produit.nom }}">
+    <div class="full-width-bg">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="{{ path('accueil') }}">Accueil</a> / 
+                <a href="{{ path('boutique') }}">Boutique</a> / 
+                <span>{{ produit.nom }}</span>
             </div>
-            <div class="col-md-6">
-                <h1>{{ produit.nom }}</h1>
-                <p>{{ produit.description }}</p>
-                <p><strong>Prix:</strong> {{ produit.prix }} €</p>
-                <a href="{{ path('boutique') }}" class="btn btn-secondary">Retour à la boutique</a>
+            <div class="row">
+                <div class="col-md-6">
+                    <img src="{{ asset('uploads/images/' ~ produit.image) }}" class="img-fluid" alt="{{ produit.nom }}">
+                </div>
+                <div class="col-md-6">
+                    <h1>{{ produit.nom }}</h1>
+                    <p><strong>Prix:</strong> {{ produit.prix }} €</p>
+                    <p>{{ produit.description }}</p>
+                    <div class="command-info">
+                        Pour commander et payer, appelez ce numéro : 
+                        <br><a href="tel:0767612352" style="text-align: center;">07 67 61 23 52</a>
+                    </div>
+                        <a href="{{ path('boutique') }}" class="btn-retour-boutique">Retour à la boutique</a>
+                </div>
             </div>
         </div>
     </div>

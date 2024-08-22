@@ -1,3 +1,4 @@
+/* styles/objectcard.css */
 .product-card {
     background-color: #FEFBFA;
     border: none;
@@ -6,7 +7,6 @@
     display: flex;
     flex-direction: column;
     transition: transform 0.3s;
-    flex-direction: column;
     justify-content: space-between;
     margin: 10px;
 }
@@ -17,6 +17,7 @@
     font-weight: 500;
     margin-bottom: 15px;
 }
+
 .product-image {
     flex: 0 0 75%; 
     object-fit: cover;
@@ -47,16 +48,16 @@
 
 .product-link {
     color: #735656;
-    text-decoration: none;
+    text-decoration: none; /* Enlève le soulignement par défaut */
     font-weight: 500;
     display: flex;
     align-items: center;
     justify-content: center;
-    text-decoration: underline;
 }
 
 .product-link:hover {
-    color: #735656;
+    text-decoration: underline; /* Ajoute le soulignement lors du survol */
+    color: #594949; /* Change la couleur lors du survol */
 }
 
 .product-link .arrow-right {
@@ -65,15 +66,34 @@
 }
 
 .product-link:hover .arrow-right {
-    transform: translateX(5px); /* Déplacer la flèche vers la droite lors du survol */
-}
-
-.product-card:hover .product-link {
-    color: #594949;
+    transform: translateX(5px); /* Déplace la flèche vers la droite lors du survol */
 }
 
 .product-actions {
     display: flex;
-    justify-content: space-between;
+    justify-content: center; /* Centrer les éléments horizontalement */
     align-items: center;
+    gap: 10px; /* Espacement entre les éléments */
+    flex-wrap: wrap; /* Permet de s'ajuster si le bouton "Modifier" est absent */
+}
+
+.product-actions .product-link {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.product-actions .btn-danger {
+    flex: 1;
+    margin-left: 10px; /* Espacement entre les éléments */
+}
+
+.product-actions .btn-danger {
+    display: none; /* Cache le bouton Modifier si non admin */
+}
+
+.product-card:hover .product-link {
+    color: #594949;
 }
