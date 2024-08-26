@@ -1,6 +1,11 @@
 /* styles/custom_product_slider.css */
 
 /* Général */
+
+.fond{
+    background-color: rgba(254, 251, 250, 0.74);
+    margin-bottom: 50px;
+}
 .custom-slider-container {
     position: relative;
     overflow: hidden;
