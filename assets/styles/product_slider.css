@@ -1,0 +1,147 @@
+/* styles/custom_product_slider.css */
+
+/* Général */
+.custom-slider-container {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+.custom-slider {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.custom-slides {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    width: 300%; /* Pour afficher 3 produits à la fois */
+}
+
+.custom-slide {
+    min-width: 33.33%; /* 100% / 3 produits visibles */
+    box-sizing: border-box;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+/* Styles appliqués aux cartes produits */
+.custom-product-card {
+    background-color: #FEFBFA;
+    border: none;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 300px; /* Largeur maximale de la carte produit */
+}
+
+.custom-product-image {
+    flex: 0 0 75%;
+    object-fit: cover;
+    max-height: 250px;
+    width: 100%;
+    height: auto;
+}
+
+.custom-product-details {
+    padding: 25px;
+    text-align: center;
+    flex: 1 0 auto;
+}
+
+.custom-product-name {
+    color: #735656;
+    font-size: 1.25rem;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.custom-transition-bar {
+    background-color: #735656;
+    height: 2px;
+    width: 40%;
+    margin: 0 auto 15px auto;
+}
+
+.custom-product-price {
+    color: #735656;
+    font-size: 0.8rem;
+    font-weight: 500;
+    margin-bottom: 15px;
+}
+
+.custom-product-link {
+    color: #735656;
+    text-decoration: none;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.custom-product-link:hover {
+    text-decoration: underline;
+    color: #594949;
+}
+
+.custom-product-link .arrow-right {
+    margin-left: 5px;
+    transition: transform 0.3s;
+}
+
+.custom-product-link:hover .arrow-right {
+    transform: translateX(5px);
+}
+
+.custom-product-actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.custom-product-card:hover .custom-product-link {
+    color: #594949;
+}
+
+/* Flèches */
+.custom-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.custom-arrow-left {
+    left: 10px;
+}
+
+.custom-arrow-right {
+    right: 10px;
+}
+.toggle-arrow {
+    cursor: pointer;
+    transition: transform 0.3s;
+    width: 12px; 
+    height: 12px; 
+    vertical-align: middle;
+    margin: 5px;
+    transform: rotate(90deg);
+
+}

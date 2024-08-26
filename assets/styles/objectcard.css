@@ -90,9 +90,6 @@
     margin-left: 10px; /* Espacement entre les éléments */
 }
 
-.product-actions .btn-danger {
-    display: none; /* Cache le bouton Modifier si non admin */
-}
 
 .product-card:hover .product-link {
     color: #594949;

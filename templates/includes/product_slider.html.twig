@@ -1,0 +1,59 @@
+<link rel="stylesheet" href="{{ asset('styles/product_slider.css') }}">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+<div class="custom-slider-container">
+    <div class="custom-slider">
+        <div class="custom-slides">
+            {% for produit in produits %}
+                <div class="custom-slide">
+                    <div class="custom-product-card">
+                        <img src="{{ asset('uploads/images/' ~ produit.image) }}" alt="{{ produit.nom }}" class="custom-product-image">
+                        <div class="custom-product-details">
+                            <h2 class="custom-product-name">{{ produit.nom }}</h2>
+                            <div class="custom-transition-bar"></div>
+                            <p class="custom-product-price">{{ produit.prix }} €</p>
+                            <a href="{{ path('product_detail', {'id': produit.id}) }}" class="custom-product-link">
+                            Voir plus
+                            <img src="{{ asset('images/flechemarron.png') }}" class="toggle-arrow" id="categorie-arrow" alt="Toggle Arrow">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            {% else %}
+                <p>Aucun produit disponible pour le moment.</p>
+            {% endfor %}
+        </div>
+        <button class="custom-arrow custom-arrow-left"><i class="fas fa-chevron-left"></i></button>
+        <button class="custom-arrow custom-arrow-right"><i class="fas fa-chevron-right"></i></button>
+    </div>
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const slides = document.querySelector('.custom-slides');
+        const slideArray = Array.from(document.querySelectorAll('.custom-slide'));
+        const arrowLeft = document.querySelector('.custom-arrow-left');
+        const arrowRight = document.querySelector('.custom-arrow-right');
+        const productsPerView = 3;  // Nombre de produits visibles à la fois
+        let currentIndex = 0;
+
+        function showSlide(index) {
+            currentIndex = (index + slideArray.length) % slideArray.length;
+            slides.style.transform = `translateX(-${currentIndex * (100 / productsPerView)}%)`;
+        }
+
+        function showNextSlide() {
+            showSlide(currentIndex + productsPerView);
+        }
+
+        function showPreviousSlide() {
+            showSlide(currentIndex - productsPerView);
+        }
+
+        arrowRight.addEventListener('click', showNextSlide);
+        arrowLeft.addEventListener('click', showPreviousSlide);
+
+        setInterval(showNextSlide, 30000); 
+    });
+</script>
+

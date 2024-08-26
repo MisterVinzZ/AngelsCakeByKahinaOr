@@ -3,7 +3,7 @@
 {% block body %}
     <link rel="stylesheet" href="{{ asset('styles/objectcard.css') }}">
     <link rel="stylesheet" href="{{ asset('styles/boutique.css') }}">
-
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;700&display=swap" rel="stylesheet">
     <div class="container mt-5">
     <div class="row">
         
@@ -174,6 +174,9 @@
                     <p>Aucun produit disponible pour le moment.</p>
                 {% endfor %}
             </div>
+            <div class="row justify-content-center mt-4">
+                <button id="loadMoreBtn" class="btn btn-primary">VOIR PLUS</button>
+            </div>
         </div>
     </div>
 </div>
@@ -265,6 +268,41 @@
                 }
             });
         }
+
+     document.addEventListener('DOMContentLoaded', () => {
+        const products = document.querySelectorAll('.product-item');
+        const loadMoreBtn = document.getElementById('loadMoreBtn');
+        let productsPerPage = 9;
+        let currentPage = 1;
+
+        function showProducts() {
+            const totalProducts = products.length;
+            const maxProductsToShow = productsPerPage * currentPage;
+
+            products.forEach((product, index) => {
+                if (index < maxProductsToShow) {
+                    product.style.display = '';
+                } else {
+                    product.style.display = 'none';
+                }
+            });
+
+            // Cacher le bouton si tous les produits sont affichés
+            if (maxProductsToShow >= totalProducts) {
+                loadMoreBtn.style.display = 'none';
+            } else {
+                loadMoreBtn.style.display = 'block';
+            }
+        }
+
+        loadMoreBtn.addEventListener('click', () => {
+            currentPage++;
+            showProducts();
+        });
+
+        // Initialiser l'affichage des produits
+        showProducts();
+    });
 </script>
 {% endblock %}
 {% include 'includes/footer.html.twig' %}
