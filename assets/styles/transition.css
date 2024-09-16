@@ -75,3 +75,87 @@ html, body {
     font-weight: 300; 
     font-size: 1.2em;
 }
+
+@media (max-width: 992px) {
+    .container {
+        flex-direction: column; /* Changement de direction pour les écrans moyens */
+        height: auto; /* Hauteur automatique pour les petits écrans */
+    }
+
+    .image-container {
+        width: 100%; /* Occupe toute la largeur */
+        height: auto; /* Ajuste la hauteur automatiquement */
+    }
+
+    .text-container {
+        width: 100%; /* Occupe toute la largeur */
+        padding: 30px; /* Réduit le padding */
+    }
+
+    .text-container h1 {
+        font-size: 1.5em; /* Réduit la taille du titre */
+    }
+
+    .text-container h2 {
+        font-size: 1.2em; /* Réduit la taille du sous-titre */
+    }
+
+    .text-list {
+        max-width: 100%; /* Ajuste la largeur maximale */
+    }
+
+    .text-list li {
+        font-size: 1em; /* Réduit la taille du texte */
+        margin-right: 20px; /* Réduit l'espace entre les éléments */
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        height: auto; /* Hauteur automatique pour les petits écrans */
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+
+    .text-container {
+        padding: 20px; /* Réduit encore le padding */
+    }
+
+    .text-container h1 {
+        font-size: 1.2em; /* Réduit la taille du titre */
+    }
+
+    .text-container h2 {
+        font-size: 1em; /* Réduit la taille du sous-titre */
+    }
+
+    .text-list li {
+        font-size: 0.9em; /* Réduit la taille du texte */
+        margin-right: 15px; /* Réduit l'espace entre les éléments */
+    }
+}
+
+@media (max-width: 576px) {
+    .container {
+        height: auto; /* Hauteur automatique pour les très petits écrans */
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    .text-container {
+        padding: 10px; /* Réduit le padding pour les très petits écrans */
+    }
+
+    .text-container h1 {
+        font-size: 1em; /* Réduit la taille du titre */
+    }
+
+    .text-container h2 {
+        font-size: 0.9em; /* Réduit la taille du sous-titre */
+    }
+
+    .text-list li {
+        font-size: 0.8em; /* Réduit la taille du texte */
+        margin-right: 10px; /* Réduit l'espace entre les éléments */
+    }
+}

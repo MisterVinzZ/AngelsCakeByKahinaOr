@@ -114,3 +114,56 @@
     height: 100px; 
     resize: none; 
 }
+
+@media only screen and (max-width: 1200px) {
+    .form-container, .map-container {
+        width: 45%; /* Adjust width for medium screens */
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .contact-container {
+        flex-direction: column; /* Stack form and map vertically */
+        padding: 20px;
+    }
+    
+    .form-container, .map-container {
+        width: 90%; /* Full width for both form and map */
+        margin-bottom: 20px; /* Add space between them */
+    }
+
+    .form-container h2 {
+        font-size: 1.8em; /* Slightly smaller heading for tablets */
+    }
+
+    .form-group {
+        max-width: 100%; /* Remove max-width constraint */
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .form-container h2 {
+        font-size: 1.6em; /* Smaller heading for mobile */
+    }
+
+    .form-group {
+        margin-bottom: 30px; /* Reduce margin between inputs */
+    }
+
+    .form-actions {
+        margin-top: 10px; /* Reduce margin for submit button */
+    }
+
+    .btn-submit {
+        padding: 8px 16px; /* Adjust button size for smaller screens */
+        font-size: 0.9em; /* Smaller button text */
+    }
+
+    .form-container, .map-container {
+        width: 100%; /* Full width for mobile */
+    }
+
+    .form-container {
+        padding: 20px; /* Reduce padding on mobile */
+    }
+}

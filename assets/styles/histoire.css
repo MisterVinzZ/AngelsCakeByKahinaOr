@@ -78,3 +78,48 @@ hr {
     background-color: #735656;
     margin: 20px auto;
 }
+
+@media only screen and (max-width: 1200px) {
+    .text-content {
+        width: 60%; /* Increase text content width for smaller screens */
+    }
+    
+    .side-image {
+        width: 20%; /* Adjust image size */
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .text-with-images {
+        flex-direction: column; /* Stack text and images vertically on tablets */
+    }
+
+    .side-image {
+        width: 40%; /* Adjust image size for tablets */
+        padding-bottom: 0; /* Remove large padding on mobile */
+    }
+
+    .text-content {
+        width: 80%; /* Adjust text width for smaller screens */
+        text-align: center; /* Center the text on mobile */
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .transition-title {
+        font-size: 1.5em; /* Reduce title size for small screens */
+    }
+
+    .side-image {
+        width: 60%; /* Larger image on smaller screens */
+    }
+
+    .text-content {
+        width: 90%; /* Make the text content full width on small devices */
+        padding: 0 10px; /* Adjust padding */
+    }
+
+    .text-content p {
+        font-size: 1em; /* Reduce paragraph font size */
+    }
+}

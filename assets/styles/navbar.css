@@ -92,3 +92,74 @@ body {
     font-family: 'Roboto', sans-serif;
     font-weight: 500; /* Medium weight */
 }
+@media (max-width: 992px) {
+    .navbar-nav .nav-item {
+        margin: 0 10px; /* Réduit les marges sur les écrans plus petits */
+    }
+
+    .navbar-nav .nav-link {
+        font-size: 18px; /* Réduit la taille de la police pour les écrans plus petits */
+        padding-left: 20px !important; /* Réduit le padding */
+    }
+
+    .phone-icon {
+        width: 30px; /* Réduit la taille de l'icône du téléphone */
+        height: 25px;
+    }
+
+    .account-icon {
+        width: 55px; /* Réduit la taille de l'icône de compte */
+        height: auto;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        padding: 10px 0; /* Réduit le padding pour les petits écrans */
+    }
+
+    .navbar-nav {
+        text-align: center; /* Centre le texte pour les petits écrans */
+    }
+
+    .navbar-nav .nav-item {
+        margin: 10px 0; /* Espace entre les éléments de menu pour les petits écrans */
+    }
+
+    .navbar-nav .nav-link {
+        font-size: 16px; /* Réduit encore la taille de la police */
+        padding-left: 0 !important; /* Réduit le padding pour mieux s'adapter */
+    }
+
+    .logo {
+        width: 80px; /* Réduit la taille du logo */
+    }
+
+
+    .account-icon {
+        width: 45px; /* Réduit davantage la taille de l'icône de compte */
+        height: auto;
+    }
+}
+
+@media (max-width: 576px) {
+    .navbar-nav .nav-item {
+        margin: 5px 0; /* Espace réduit entre les éléments de menu pour les très petits écrans */
+    }
+
+    .navbar-nav .nav-link {
+        font-size: 14px; /* Réduit encore la taille de la police */
+        padding-left: 0 !important; /* Réduit le padding */
+    }
+
+    .logo {
+        width: 60px; /* Réduit la taille du logo */
+    }
+
+   
+
+    .account-icon {
+        width: 40px; /* Réduit la taille de l'icône de compte */
+        height: auto;
+    }
+}

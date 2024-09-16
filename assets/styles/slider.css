@@ -164,3 +164,100 @@ html, body {
     color: rgb(0, 0, 0);
     box-sizing: border-box;
 }
+
+@media (max-width: 992px) {
+    .slider-container {
+        padding: 20px 10px; /* Ajuste le padding pour les écrans moyens */
+        
+    }
+
+    .slider {
+        width: 95%; /* Ajuste la largeur pour les écrans moyens */
+    }
+
+    .slide-content {
+        width: 45%; /* Ajuste la largeur pour les écrans plus petits */
+        right: 0; /* Ajuste la position */
+    }
+
+    .slide-content h2 {
+        font-size: 1.2rem; /* Réduit la taille du titre */
+    }
+
+    .slide-content p {
+        font-size: 0.8rem; /* Réduit la taille du texte */
+    }
+
+    .slide-content .btn {
+        padding: 8px 15px; /* Réduit le padding des boutons */
+        font-size: 0.8rem; /* Réduit la taille du texte des boutons */
+    }
+    .slider .logo {
+        width: 100px;
+    }
+}
+
+@media (max-width: 768px) {
+    .slider-container {
+        height: 50vh; /* Réduit la hauteur pour les petits écrans */
+        padding: 10px; /* Réduit le padding */
+    }
+
+    .slider {
+        width: 100%; /* Ajuste la largeur pour les petits écrans */
+    }
+
+    .slide-content {
+        width: 50%; /* Ajuste pour les petits écrans */
+        right: 0;
+        padding: 10px;
+    }
+
+    .slide-content h2 {
+        font-size: 1rem; /* Réduit la taille du titre */
+    }
+
+    .slide-content p {
+        font-size: 0.7rem; /* Réduit la taille du texte */
+    }
+
+    .slide-content .btn {
+        padding: 7px 12px; /* Réduit le padding des boutons */
+        font-size: 0.7rem; /* Réduit la taille du texte des boutons */
+    }
+}
+
+@media (max-width: 576px) {
+    .slider-container {
+        height: 40vh; /* Réduit la hauteur pour les très petits écrans */
+        padding: 5px; /* Réduit le padding */
+    }
+
+    .slider {
+        width: 100%; /* Ajuste la largeur pour les très petits écrans */
+    }
+
+    .slide-content {
+        width: 60%; /* Ajuste la largeur pour les très petits écrans */
+        right: 0;
+        padding: 5px;
+    }
+
+    .slide-content h2 {
+        font-size: 0.9rem; /* Réduit la taille du titre */
+    }
+
+    .slide-content p {
+        font-size: 0.7rem; /* Réduit la taille du texte */
+    }
+
+    .slide-content .btn {
+        padding: 5px 10px; /* Réduit le padding des boutons */
+        font-size: 0.7rem; /* Réduit la taille du texte des boutons */
+    }
+
+    .arrow {
+        font-size: 18px; /* Réduit la taille des flèches */
+        padding: 12px; /* Réduit le padding */
+    }
+}

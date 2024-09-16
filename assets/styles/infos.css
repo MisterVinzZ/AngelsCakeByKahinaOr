@@ -55,3 +55,53 @@ body {
 .column a:hover {
     color: #f2dbd2;
 }
+@media only screen and (max-width: 1024px) {
+    .container {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .column {
+        width: 90%;
+        margin-bottom: 20px;
+    }
+
+    .info-section {
+        height: auto;
+        padding: 40px 20px;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .column h3 {
+        font-size: 1.3em;
+    }
+
+    .column p {
+        font-size: 1.1em;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .column h3 {
+        font-size: 1.2em;
+    }
+
+    .column p {
+        font-size: 1em;
+        line-height: 1.4;
+    }
+
+    .info-section {
+        padding: 30px 15px;
+    }
+
+    .container {
+        width: 100%;
+    }
+
+    .column {
+        margin: 0 0 20px 0;
+    }
+}

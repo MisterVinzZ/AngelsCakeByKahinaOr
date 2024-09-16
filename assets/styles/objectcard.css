@@ -94,3 +94,65 @@
 .product-card:hover .product-link {
     color: #594949;
 }
+
+@media (max-width: 768px) {
+    .product-card {
+        margin: 10px 5px;
+    }
+
+
+    .product-details {
+        padding: 15px;
+    }
+
+    .product-name {
+        font-size: 1rem;
+    }
+
+    .product-price {
+        font-size: 0.7rem;
+    }
+
+    .transition-bar {
+        width: 50%;
+    }
+
+    .product-actions {
+        flex-direction: column;
+        gap: 5px;
+    }
+}
+
+@media (max-width: 480px) {
+    .product-card {
+        margin: 5px 2px;
+    }
+
+    .product-image {
+        max-height: 150px;
+    }
+
+    .product-details {
+        padding: 10px;
+    }
+
+    .product-name {
+        font-size: 0.9rem;
+    }
+
+    .product-price {
+        font-size: 0.6rem;
+    }
+
+    .transition-bar {
+        width: 60%;
+    }
+
+    .product-actions {
+        gap: 2px;
+    }
+
+    .product-actions .btn-danger {
+        margin-left: 0;
+    }
+}
